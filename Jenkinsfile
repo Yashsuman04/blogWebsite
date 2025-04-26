@@ -10,13 +10,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Abhimanyu2811/blogWebsite1.git'
+                git branch: 'main', url: 'https://github.com/Yashsuman04/blogWebsite.git'
             }
         }
 
         stage('Install Node.js Dependencies') {
             steps {
-                dir('blogWebsite-main') {
+                dir('blogWebsite') {
                     bat 'npm install'
                 }
             }
@@ -24,7 +24,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                dir('blogWebsite-main') {
+                dir('blogWebsite') {
                     bat "docker build -t %IMAGE_NAME%:%IMAGE_TAG% ."
                 }
             }
